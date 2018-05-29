@@ -2,11 +2,15 @@ const { UserService } = cano.app.services;
 
 class AuthController {
 
-  async login({ request, response }) {
+  async signIn({ request, response }) {
     const { body } = request;
     const result = await UserService.login(body);
     response.status = result.status;
     response.body = result.body;
+  }
+
+  async signOut({ request, response }) {
+    response.status = 200;
   }
 
   async refreshToken({ request, response }) {

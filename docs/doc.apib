@@ -6,7 +6,7 @@ This is the API Gateway of Bunkey backend application. Written in Node JS based 
 
 # Group Authetication
 
-## Sign In [/v1/auth]
+## Sign In [/v1/auth/sign-in]
 
 ### Authentication on system [POST]
 
@@ -17,6 +17,18 @@ This is the API Gateway of Bunkey backend application. Written in Node JS based 
 + Response 200 (application/json)
 
     + Attributes (Token Access)
+
+## Sign Out [/v1/auth/sign-out]
+
+### Finish authorization on system [POST]
+
++ Request
+
+    + Headers
+        
+            Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+
++ Response 200
 
 ## Refresh Access Token [/v1/auth/refresh-token]
 
