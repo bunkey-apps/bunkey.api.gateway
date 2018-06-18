@@ -1,6 +1,7 @@
 import Router from 'koa-router';
-const router = new Router({ prefix: '/v1/admin' });
-const { AuthPolice } = cano.app.policies;
+
+const { AuthPolicies: { bearer, jwt, role } } = cano.app.policies;
+const { AuthPolicies } = cano.app.policies;
 const {
   UserController,
   ClientController,
@@ -9,34 +10,40 @@ const {
   PaymentController,
 } = cano.app.controllers;
 
-router.post('/users', AuthPolice.jwt, AuthPolice.role, UserController.create);
-router.get('/users', AuthPolice.jwt, AuthPolice.role, UserController.get);
-router.get('/users/:id', AuthPolice.jwt, AuthPolice.role, UserController.getById);
-router.put('/users/:id', AuthPolice.jwt, AuthPolice.role, UserController.updateById);
-router.delete('/users/:id', AuthPolice.jwt, AuthPolice.role, UserController.deleteById);
+const router = new Router({ prefix: '/v1/admin' });
+const isAdmin = role('admin');
+// const isAdmin = role(['editor', 'admin']);
+// console.log(isAdmin);
 
-router.post('/clients', AuthPolice.jwt, AuthPolice.role, ClientController.create);
-router.get('/clients', AuthPolice.jwt, AuthPolice.role, ClientController.get);
-router.get('/clients/:id', AuthPolice.jwt, AuthPolice.role, ClientController.getById);
-router.put('/clients/:id', AuthPolice.jwt, AuthPolice.role, ClientController.updateById);
-router.delete('/clients/:id', AuthPolice.jwt, AuthPolice.role, ClientController.deleteById);
+router
+    .post('/users', bearer, jwt, isAdmin, UserController.create)
+    .get('/users', bearer, jwt, isAdmin, UserController.get)
+    .get('/users/:id', bearer, jwt, isAdmin, UserController.getById)
+    .put('/users/:id', bearer, jwt, isAdmin, UserController.updateById)
+    .delete('/users/:id', bearer, jwt, isAdmin, UserController.deleteById)
 
-router.post('/plans', AuthPolice.jwt, AuthPolice.role, PlanController.create);
-router.get('/plans', AuthPolice.jwt, AuthPolice.role, PlanController.get);
-router.get('/plans/:id', AuthPolice.jwt, AuthPolice.role, PlanController.getById);
-router.put('/plans/:id', AuthPolice.jwt, AuthPolice.role, PlanController.updateById);
-router.delete('/plans/:id', AuthPolice.jwt, AuthPolice.role, PlanController.deleteById);
+    .post('/clients', AuthPolicies.jwt, isAdmin, ClientController.create)
+    .get('/clients', AuthPolicies.jwt, isAdmin, ClientController.get)
+    .get('/clients/:id', AuthPolicies.jwt, isAdmin, ClientController.getById)
+    .put('/clients/:id', AuthPolicies.jwt, isAdmin, ClientController.updateById)
+    .delete('/clients/:id', AuthPolicies.jwt, isAdmin, ClientController.deleteById)
 
-router.post('/contracts', AuthPolice.jwt, AuthPolice.role, ContractController.create);
-router.get('/contracts', AuthPolice.jwt, AuthPolice.role, ContractController.get);
-router.get('/contracts/:id', AuthPolice.jwt, AuthPolice.role, ContractController.getById);
-router.put('/contracts/:id', AuthPolice.jwt, AuthPolice.role, ContractController.updateById);
-router.delete('/contracts/:id', AuthPolice.jwt, AuthPolice.role, ContractController.deleteById);
+    .post('/plans', AuthPolicies.jwt, isAdmin, PlanController.create)
+    .get('/plans', AuthPolicies.jwt, isAdmin, PlanController.get)
+    .get('/plans/:id', AuthPolicies.jwt, isAdmin, PlanController.getById)
+    .put('/plans/:id', AuthPolicies.jwt, isAdmin, PlanController.updateById)
+    .delete('/plans/:id', AuthPolicies.jwt, isAdmin, PlanController.deleteById)
 
-router.post('/payments', AuthPolice.jwt, AuthPolice.role, PaymentController.create);
-router.get('/payments', AuthPolice.jwt, AuthPolice.role, PaymentController.get);
-router.get('/payments/:id', AuthPolice.jwt, AuthPolice.role, PaymentController.getById);
-router.put('/payments/:id', AuthPolice.jwt, AuthPolice.role, PaymentController.updateById);
-router.delete('/payments/:id', AuthPolice.jwt, AuthPolice.role, PaymentController.deleteById);
+    .post('/contracts', AuthPolicies.jwt, isAdmin, ContractController.create)
+    .get('/contracts', AuthPolicies.jwt, isAdmin, ContractController.get)
+    .get('/contracts/:id', AuthPolicies.jwt, isAdmin, ContractController.getById)
+    .put('/contracts/:id', AuthPolicies.jwt, isAdmin, ContractController.updateById)
+    .delete('/contracts/:id', AuthPolicies.jwt, isAdmin, ContractController.deleteById)
 
-module.exports = router
+    .post('/payments', AuthPolicies.jwt, isAdmin, PaymentController.create)
+    .get('/payments', AuthPolicies.jwt, isAdmin, PaymentController.get)
+    .get('/payments/:id', AuthPolicies.jwt, isAdmin, PaymentController.getById)
+    .put('/payments/:id', AuthPolicies.jwt, isAdmin, PaymentController.updateById)
+    .delete('/payments/:id', AuthPolicies.jwt, isAdmin, PaymentController.deleteById);
+
+module.exports = router;
