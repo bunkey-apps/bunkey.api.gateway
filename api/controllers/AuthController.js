@@ -4,7 +4,7 @@ import R from 'ramda';
 
 class AuthController {
 
-  async login({ request, response }) {
+  async signIn({ request, response }) {
     const Token = require('../models/Token');
     const { body } = request;
     const result = await UserService.login(body);
@@ -23,7 +23,7 @@ class AuthController {
     ctx.body = result.body;
   }
 
-  async logout(ctx) {
+  async signOut(ctx) {
     const { request: { body }, state: { user } } = ctx;
     const result = await UserService.logout(R.merge(body, user));
     await TokenService.findAndRemove({ refreshToken: body.refreshToken });
