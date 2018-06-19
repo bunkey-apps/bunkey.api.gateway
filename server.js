@@ -6,7 +6,7 @@ require('babel-polyfill');
 
 const app = new Cano(__dirname);
 
-app.use(logger());
+app.use(logger('combined'));
 app.use(parser());
 
 app.on('error', err => {

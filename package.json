@@ -14,6 +14,7 @@
     },
     "dependencies": {
         "cano-cube-controllers": "https://github.com/cano-koa/cano-cube-controllers.git",
+        "cano-cube-passport": "https://github.com/cano-koa/cano-cube-passport.git",
         "cano-cube-policies": "https://github.com/cano-koa/cano-cube-policies.git",
         "cano-cube-routers": "https://github.com/cano-koa/cano-cube-routers.git",
         "cano-cube-services": "https://github.com/cano-koa/cano-cube-services.git",
@@ -22,6 +23,12 @@
         "koa-logger": "^3.2.0",
         "koa-router": "^7.4.0",
         "mongoose-model-class": "https://github.com/cano-koa/mongoose-model-class.git",
+        "nohm": "https://github.com/maritz/nohm.git#v1_maintenance",
+        "passport-http-bearer": "^1.0.1",
+        "passport-jwt": "^4.0.0",
+        "query-string": "^6.1.0",
+        "ramda": "^0.25.0",
+        "redis": "^2.8.0",
         "request": "^2.87.0",
         "request-promise-native": "^1.0.5",
         "winston": "^2.4.2"
@@ -33,6 +40,9 @@
         "babel-preset-env": "^1.7.0",
         "babel-preset-stage-2": "^6.24.1",
         "babel-register": "^6.26.0",
+        "eslint": "^3.19.0",
+        "eslint-config-airbnb-base": "^11.2.0",
+        "eslint-plugin-import": "^2.3.0",
         "mocha": "^5.2.0",
         "nodemon": "^1.17.4"
     }

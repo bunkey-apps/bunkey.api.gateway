@@ -25,7 +25,7 @@ This is the API Gateway of Bunkey backend application. Written in Node JS based 
 + Request
 
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
 
 + Response 200
@@ -47,7 +47,7 @@ When the access token expired you should use this services to renovate it.
 
 ## Recovery Password [/v1/recovery-password]
 
-When the user forget his password, he can use this services to 
+When the user forget his password, he can use this services to
 
 ### Recovery Password [POST]
 
@@ -61,11 +61,11 @@ This is the first step for the recovery password process, the user will send his
 
 ### Update Password [PUT]
 
-This is the two step for the recovery password process, you have to send the new password with the recovery password token. 
+This is the two step for the recovery password process, you have to send the new password with the recovery password token.
 + Request (application/json)
-    
+
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
 
     + Attributes (object)
@@ -82,7 +82,7 @@ This is the two step for the recovery password process, you have to send the new
 + Request (application/json)
 
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
 
     + Attributes (User)
@@ -96,13 +96,13 @@ This is the two step for the recovery password process, you have to send the new
 + Request (application/json)
 
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
 
 + Response 201 (application/json)
-    
+
     + Headers
-        
+
             X-Pagination-Total-Count: 1
             X-Pagination-Limit: 10
 
@@ -119,7 +119,7 @@ This is the two step for the recovery password process, you have to send the new
 + Request (application/json)
 
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
 
 + Response 200 (application/json)
@@ -131,9 +131,9 @@ This is the two step for the recovery password process, you have to send the new
 + Request (application/json)
 
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
-    
+
     + Attributes (User)
 
 + Response 204 (application/json)
@@ -144,7 +144,7 @@ This is the two step for the recovery password process, you have to send the new
 + Request (application/json)
 
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
 
 + Response 204 (application/json)
@@ -156,7 +156,7 @@ This is the two step for the recovery password process, you have to send the new
 + Request (application/json)
 
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
 
     + Attributes (Client)
@@ -170,13 +170,13 @@ This is the two step for the recovery password process, you have to send the new
 + Request (application/json)
 
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
 
 + Response 201 (application/json)
-    
+
     + Headers
-        
+
             X-Pagination-Total-Count: 1
             X-Pagination-Limit: 10
 
@@ -193,7 +193,7 @@ This is the two step for the recovery password process, you have to send the new
 + Request (application/json)
 
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
 
 + Response 200 (application/json)
@@ -205,9 +205,9 @@ This is the two step for the recovery password process, you have to send the new
 + Request (application/json)
 
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
-    
+
     + Attributes (Client)
 
 + Response 204 (application/json)
@@ -218,7 +218,7 @@ This is the two step for the recovery password process, you have to send the new
 + Request (application/json)
 
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
 
 + Response 204 (application/json)
@@ -230,7 +230,7 @@ This is the two step for the recovery password process, you have to send the new
 + Request (application/json)
 
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
 
     + Attributes (Plan)
@@ -244,13 +244,13 @@ This is the two step for the recovery password process, you have to send the new
 + Request (application/json)
 
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
 
 + Response 201 (application/json)
-    
+
     + Headers
-        
+
             X-Pagination-Total-Count: 1
             X-Pagination-Limit: 10
 
@@ -267,7 +267,7 @@ This is the two step for the recovery password process, you have to send the new
 + Request (application/json)
 
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
 
 + Response 200 (application/json)
@@ -279,9 +279,9 @@ This is the two step for the recovery password process, you have to send the new
 + Request (application/json)
 
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
-    
+
     + Attributes (Plan)
 
 + Response 204 (application/json)
@@ -292,7 +292,7 @@ This is the two step for the recovery password process, you have to send the new
 + Request (application/json)
 
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
 
 + Response 204 (application/json)
@@ -304,7 +304,7 @@ This is the two step for the recovery password process, you have to send the new
 + Request (application/json)
 
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
 
     + Attributes (Contract)
@@ -318,13 +318,13 @@ This is the two step for the recovery password process, you have to send the new
 + Request (application/json)
 
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
 
 + Response 201 (application/json)
-    
+
     + Headers
-        
+
             X-Pagination-Total-Count: 1
             X-Pagination-Limit: 10
 
@@ -341,7 +341,7 @@ This is the two step for the recovery password process, you have to send the new
 + Request (application/json)
 
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
 
 + Response 200 (application/json)
@@ -353,9 +353,9 @@ This is the two step for the recovery password process, you have to send the new
 + Request (application/json)
 
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
-    
+
     + Attributes (Contract)
 
 + Response 204 (application/json)
@@ -366,7 +366,7 @@ This is the two step for the recovery password process, you have to send the new
 + Request (application/json)
 
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
 
 + Response 204 (application/json)
@@ -378,13 +378,13 @@ This is the two step for the recovery password process, you have to send the new
 + Request (application/json)
 
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
 
 + Response 201 (application/json)
-    
+
     + Headers
-        
+
             X-Pagination-Total-Count: 1
             X-Pagination-Limit: 10
 
@@ -401,7 +401,7 @@ This is the two step for the recovery password process, you have to send the new
 + Request (application/json)
 
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
 
 + Response 200 (application/json)
@@ -413,9 +413,9 @@ This is the two step for the recovery password process, you have to send the new
 + Request (application/json)
 
     + Headers
-        
+
             Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
-    
+
     + Attributes (Payment)
 
 + Response 204 (application/json)
@@ -442,7 +442,7 @@ This is the two step for the recovery password process, you have to send the new
 
 ## User (object)
 + Include (Credentials)
-+ name: `Jhon Snow` (string, required) - The user's name. 
++ name: `Jhon Snow` (string, required) - The user's name.
 + role: `admin` (enum[string]) - The user's rol in the system.
     + Members
         + `admin` - The Bunkey Master role.
@@ -473,7 +473,7 @@ This is the two step for the recovery password process, you have to send the new
 + status: true (boolean, optional, default) - The client's status.
 + users: [] (array[string], optional, default) - The client's users operators.
 + *acountSetting* (object, optional) - The client's account setting.
-    + Include (Acount Setting) 
+    + Include (Acount Setting)
 
 
 ## Client with id (object)

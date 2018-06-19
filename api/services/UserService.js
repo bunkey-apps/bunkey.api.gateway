@@ -1,20 +1,28 @@
-const baseUrl = process.env.USER_SERVICE_URL
+import queryString from 'query-string';
+
+const baseUrl = process.env.USER_SERVICE_URL || 'http://localhost:20145'
 const headers = {
   Authorization: `Bearer ${process.env.USER_SERVICE_ACCESS_TOKEN}`,
 }
 
 class UserService {
 
-  async login(body) {
+  login(body) {
     const { RequestService } = cano.app.services;
     const request = RequestService.create(baseUrl);
-    return await request.post('/login', body, { headers });
+    return request.post('/auth', body, { headers });
   }
 
-  async refreshToken(body) {
+  refreshToken(body) {
     const { RequestService } = cano.app.services;
     const request = RequestService.create(baseUrl);
-    return await request.post('/refresh-token', body, { headers });
+    return request.post('/auth/refresh-token', body, { headers });
+  }
+
+  logout(body) {
+    const { RequestService } = cano.app.services;
+    const request = RequestService.create(baseUrl);
+    return request.post('/auth/logout', body, { headers });
   }
 
   async recoveryPassword(body) {
@@ -29,34 +37,34 @@ class UserService {
     return await request.put('/recovery-password', body, { headers });
   }
 
-  async create(body) {
+  create(body) {
     const { RequestService } = cano.app.services;
     const request = RequestService.create(baseUrl);
-    return await request.post('/users', body, { headers });
+    return request.post('/users', body, { headers });
   }
 
-  async get(query) {
+  get(query) {
     const { RequestService } = cano.app.services;
     const request = RequestService.create(baseUrl);
-    return await request.get(`/users?${query}`, { headers });
+    return request.get(`/users?${queryString.stringify(query)}`, { headers });
   }
 
-  async getById(id, query) {
+  getById(id, query) {
     const { RequestService } = cano.app.services;
     const request = RequestService.create(baseUrl);
-    return await request.get(`/users/${id}?${query}`, { headers });
+    return request.get(`/users/${id}?${queryString.stringify(query)}`, { headers });
   }
 
-  async updateById(id, body) {
+  updateById(id, body) {
     const { RequestService } = cano.app.services;
     const request = RequestService.create(baseUrl);
-    return await request.put(`/users/${id}`, body, { headers });
+    return request.put(`/users/${id}`, body, { headers });
   }
 
-  async deleteById(id) {
+  deleteById(id, body) {
     const { RequestService } = cano.app.services;
     const request = RequestService.create(baseUrl);
-    return await request.delete(`/users/${id}`, body, { headers });
+    return request.delete(`/users/${id}`, body, { headers });
   }
 
 }
