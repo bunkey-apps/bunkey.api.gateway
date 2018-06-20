@@ -1,9 +1,9 @@
 import queryString from 'query-string';
 
-const baseUrl = process.env.USER_SERVICE_URL || 'http://localhost:20145'
+const baseUrl = process.env.USER_SERVICE_URL || 'http://localhost:20145';
 const headers = {
-  Authorization: `Bearer ${process.env.USER_SERVICE_ACCESS_TOKEN}`,
-}
+  apikey: `${process.env.USER_SERVICE_API_KEY}`,
+};
 
 class UserService {
 
@@ -25,17 +25,17 @@ class UserService {
     return request.post('/auth/logout', body, { headers });
   }
 
-  async recoveryPassword(body) {
-    const { RequestService } = cano.app.services;
-    const request = RequestService.create(baseUrl);
-    return await request.post('/recovery-password', body, { headers });
-  }
-
-  async updatePassword(body) {
-    const { RequestService } = cano.app.services;
-    const request = RequestService.create(baseUrl);
-    return await request.put('/recovery-password', body, { headers });
-  }
+  // async recoveryPassword(body) {
+  //   const { RequestService } = cano.app.services;
+  //   const request = RequestService.create(baseUrl);
+  //   return await request.post('/recovery-password', body, { headers });
+  // }
+  //
+  // async updatePassword(body) {
+  //   const { RequestService } = cano.app.services;
+  //   const request = RequestService.create(baseUrl);
+  //   return await request.put('/recovery-password', body, { headers });
+  // }
 
   create(body) {
     const { RequestService } = cano.app.services;

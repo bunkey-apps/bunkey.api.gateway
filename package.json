@@ -13,12 +13,16 @@
         "test": "mocha -R spec --compilers js:babel-core/register ./test/**/*.js"
     },
     "dependencies": {
+        "@koa/cors": "^2.2.1",
         "cano-cube-controllers": "https://github.com/cano-koa/cano-cube-controllers.git",
+        "cano-cube-error": "https://github.com/cano-koa/cano-cube-error.git",
         "cano-cube-passport": "https://github.com/cano-koa/cano-cube-passport.git",
         "cano-cube-policies": "https://github.com/cano-koa/cano-cube-policies.git",
         "cano-cube-routers": "https://github.com/cano-koa/cano-cube-routers.git",
         "cano-cube-services": "https://github.com/cano-koa/cano-cube-services.git",
         "cano-koa": "https://github.com/cano-koa/cano-koa.git",
+        "dotenv": "^6.0.0",
+        "jsonwebtoken": "^8.3.0",
         "koa-bodyparser": "^4.2.0",
         "koa-logger": "^3.2.0",
         "koa-router": "^7.4.0",

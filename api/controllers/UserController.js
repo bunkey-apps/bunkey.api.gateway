@@ -1,16 +1,10 @@
 // import R from 'ramda';
-const { UserService } = cano.app.services;
-
 class UserController {
 
   async create({ request, response }) {
-      try {
-          const result = await UserService.create(request.body);
-          response.status = result.statusCode;
-          response.body = result.body;
-      } catch (e) {
-          console.log(e);
-      }
+    const result = await UserService.create(request.body);
+    response.status = result.statusCode;
+    response.body = result.body;
   }
 
   async get({ request, response }) {
@@ -27,7 +21,6 @@ class UserController {
 
   async updateById(ctx) {
     const { params, request } = ctx;
-    // console.log(R.merge(request.body, user));
     const result = await UserService.updateById(params.id, request.body);
     ctx.status = result.statusCode;
     ctx.body = result.body;

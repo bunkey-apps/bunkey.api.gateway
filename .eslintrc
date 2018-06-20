@@ -36,5 +36,17 @@
     },
     "globals": {
         "cano": true,
+        "AuthController": true,
+        "UserController": true,
+        "ClientController": true,
+        "PlanController": true,
+        "ContractController": true,
+        "PaymentController": true,
+        "UserService": true,
+        "TokenService": true,
+        "AuthPolicies": true,
+        "JWTService": true,
+        "CanoError": true,
+        "AuthorizationError": true
     }
 }

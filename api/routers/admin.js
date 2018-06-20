@@ -1,14 +1,6 @@
 import Router from 'koa-router';
 
-const { AuthPolicies: { bearer, jwt, role } } = cano.app.policies;
-const { AuthPolicies } = cano.app.policies;
-const {
-  UserController,
-  ClientController,
-  PlanController,
-  ContractController,
-  PaymentController,
-} = cano.app.controllers;
+const { bearer, jwt, role } = AuthPolicies;
 
 const router = new Router({ prefix: '/v1/admin' });
 const isAdmin = role('admin');

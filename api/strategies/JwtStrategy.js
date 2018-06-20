@@ -15,7 +15,7 @@ class JwtStrategy extends Strategy {
 
     static options() {
         return {
-            secretOrKey: 'my-secret-key',
+            secretOrKey: process.env.JWT_TOKEN_SECRET,
             jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('Bearer'),
         };
     }
