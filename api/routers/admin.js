@@ -18,22 +18,16 @@ router
     .put('/clients/:id', AuthPolicies.jwt, isAdmin, ClientController.updateById)
     .delete('/clients/:id', AuthPolicies.jwt, isAdmin, ClientController.deleteById)
 
-    .post('/plans', AuthPolicies.jwt, isAdmin, PlanController.create)
-    .get('/plans', AuthPolicies.jwt, isAdmin, PlanController.get)
-    .get('/plans/:id', AuthPolicies.jwt, isAdmin, PlanController.getById)
-    .put('/plans/:id', AuthPolicies.jwt, isAdmin, PlanController.updateById)
-    .delete('/plans/:id', AuthPolicies.jwt, isAdmin, PlanController.deleteById)
-
     .post('/contracts', AuthPolicies.jwt, isAdmin, ContractController.create)
     .get('/contracts', AuthPolicies.jwt, isAdmin, ContractController.get)
     .get('/contracts/:id', AuthPolicies.jwt, isAdmin, ContractController.getById)
     .put('/contracts/:id', AuthPolicies.jwt, isAdmin, ContractController.updateById)
     .delete('/contracts/:id', AuthPolicies.jwt, isAdmin, ContractController.deleteById)
 
-    .post('/payments', AuthPolicies.jwt, isAdmin, PaymentController.create)
+    .post('/contracts/:contract/payments', AuthPolicies.jwt, isAdmin, PaymentController.create)
+    .get('/contracts/:contract/payments', AuthPolicies.jwt, isAdmin, PaymentController.getByContractId)
     .get('/payments', AuthPolicies.jwt, isAdmin, PaymentController.get)
-    .get('/payments/:id', AuthPolicies.jwt, isAdmin, PaymentController.getById)
-    .put('/payments/:id', AuthPolicies.jwt, isAdmin, PaymentController.updateById)
-    .delete('/payments/:id', AuthPolicies.jwt, isAdmin, PaymentController.deleteById);
+    .put('/contracts/:contract/payments/:id', AuthPolicies.jwt, isAdmin, PaymentController.updateById)
+    .delete('/contracts/:contract/payments/:id', AuthPolicies.jwt, isAdmin, PaymentController.deleteById);
 
 module.exports = router;

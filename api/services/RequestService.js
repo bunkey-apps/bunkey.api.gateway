@@ -28,7 +28,6 @@ class RequestWrapper {
     const method = 'post';
     const uri = this.baseUrl + resource;
     const options = Object.assign({}, defaultOptions, opts, { body, uri, method });
-    console.log(options);
     return RequestPromise(options);
   }
 

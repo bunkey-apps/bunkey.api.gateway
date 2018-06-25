@@ -2,33 +2,37 @@ const { PaymentService } = cano.app.services;
 
 class PaymentController {
 
-  async create({ request, response }) {
-    const result = await PaymentService.create(request.body);
-    response.status = result.status;
+  async create({ request, params, response }) {
+    const { contract } = params;
+    const result = await PaymentService.create(contract, request.body);
+    response.status = result.statusCode;
+    response.body = result.body;
+  }
+
+  async getByContractId({ request, params, response }) {
+    const { contract } = params;
+    const result = await PaymentService.get({ contract, ...request.query });
+    response.status = result.statusCode;
     response.body = result.body;
   }
 
   async get({ request, response }) {
     const result = await PaymentService.get(request.query);
-    response.status = result.status;
-    response.body = result.body;
-  }
-
-  async getById({ request, params, response }) {
-    const result = await PaymentService.getById(params.id, request.query);
-    response.status = result.status;
+    response.status = result.statusCode;
     response.body = result.body;
   }
 
   async updateById({ params, request, response }) {
-    const result = await PaymentService.updateById(params.id, request.body);
-    response.status = result.status;
+    const { contract, id } = params;
+    const result = await PaymentService.updateById(contract, id, request.body);
+    response.status = result.statusCode;
     response.body = result.body;
   }
 
   async deleteById({ params, response }) {
-    const result = await PaymentService.deleteById(params.id);
-    response.status = result.status;
+    const { contract, id } = params;
+    const result = await PaymentService.deleteById(contract, id);
+    response.status = result.statusCode;
     response.body = result.body;
   }
 

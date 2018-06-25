@@ -4,8 +4,7 @@ module.exports = () => async(ctx, next) => {
     await next();
   } catch (err) {
     const error = CanoError.handler(err);
-    cano.log.error('-->', error.original);
-    cano.log.error('-->', error);
+    cano.log.error('-->', error.fullContent);
     ctx.status = error.status;
     ctx.body = error.content;
   }

@@ -1,38 +1,38 @@
-const baseUrl = process.env.ADMIN_SERVICE_URL
+import queryString from 'query-string';
+
+const baseUrl = process.env.ADMIN_SERVICE_URL;
 const headers = {
-  Authorization: `Bearer ${process.env.ADMIN_SERVICE_ACCESS_TOKEN}`,
-}
+  apikey: process.env.ADMIN_APIKEY,
+};
 
 class PaymentService {
 
-  async create(body) {
+  async create(contract, body) {
     const { RequestService } = cano.app.services;
     const request = RequestService.create(baseUrl);
-    return await request.post('/payments', body, { headers });
+    const response = await request.post(`/contracts/${contract}/payments`, body, { headers });
+    return response;
   }
 
   async get(query) {
     const { RequestService } = cano.app.services;
     const request = RequestService.create(baseUrl);
-    return await request.get(`/payments?${query}`, { headers });
+    const response = await request.get(`/payments?${queryString.stringify(query)}`, { headers });
+    return response;
   }
 
-  async getById(id, query) {
+  async updateById(contract, id, body) {
     const { RequestService } = cano.app.services;
     const request = RequestService.create(baseUrl);
-    return await request.get(`/payments/${id}?${query}`, { headers });
+    const response = await request.put(`/contracts/${contract}/payments/${id}`, body, { headers });
+    return response;
   }
 
-  async updateById(id, body) {
+  async deleteById(contract, id) {
     const { RequestService } = cano.app.services;
     const request = RequestService.create(baseUrl);
-    return await request.put(`/payments/${id}`, body, { headers });
-  }
-
-  async deleteById(id) {
-    const { RequestService } = cano.app.services;
-    const request = RequestService.create(baseUrl);
-    return await request.delete(`/payments/${id}`, body, { headers });
+    const response = await request.delete(`/contracts/${contract}/payments/${id}`, {}, { headers });
+    return response;
   }
 
 }
