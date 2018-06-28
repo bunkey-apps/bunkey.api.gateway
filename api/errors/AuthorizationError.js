@@ -1,4 +1,4 @@
-{
+module.exports = {
     "InsufficientPrivileges": {
         "description": "Does not have the necessary privileges to perform this operation.",
         "status": 403
