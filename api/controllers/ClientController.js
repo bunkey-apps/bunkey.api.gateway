@@ -13,9 +13,15 @@ class ClientController {
     response.status = result.statusCode;
     response.body = result.body;
   }
-
+  
   async getById({ request, params, response }) {
     const result = await ClientService.getById(params.id, request.query);
+    response.status = result.statusCode;
+    response.body = result.body;
+  }
+
+  async getContracts({ request, params, response }) {
+    const result = await ClientService.getContracts(params.id, request.query);
     response.status = result.statusCode;
     response.body = result.body;
   }

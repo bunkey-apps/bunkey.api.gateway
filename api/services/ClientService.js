@@ -28,6 +28,13 @@ class ClientService {
     return response;
   }
 
+  async getContracts(id, query) {
+    const { RequestService } = cano.app.services;
+    const request = RequestService.create(baseUrl);
+    const response = await request.get(`/clients/${id}/contracts?${queryString.stringify(query)}`, { headers });
+    return response;
+  }
+
   async updateById(id, body) {
     const { RequestService } = cano.app.services;
     const request = RequestService.create(baseUrl);

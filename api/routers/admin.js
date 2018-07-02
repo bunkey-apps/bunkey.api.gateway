@@ -15,6 +15,7 @@ router
     .post('/clients', AuthPolicies.jwt, isAdmin, ClientController.create)
     .get('/clients', AuthPolicies.jwt, isAdmin, ClientController.get)
     .get('/clients/:id', AuthPolicies.jwt, isAdmin, ClientController.getById)
+    .get('/clients/:id/contracts', AuthPolicies.jwt, isAdmin, ClientController.getContracts)
     .put('/clients/:id', AuthPolicies.jwt, isAdmin, ClientController.updateById)
     .delete('/clients/:id', AuthPolicies.jwt, isAdmin, ClientController.deleteById)
 
