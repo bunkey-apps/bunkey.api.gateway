@@ -8,7 +8,7 @@
     "license": "Apache-2.0",
     "scripts": {
         "start": "nodemon server.js --exec babel-node",
-        "build": "babel . --ignore node_modules -d dist",
+        "build": "babel . --ignore node_modules -d dist ",
         "serve": "node dist/server.js",
         "test": "mocha -R spec --compilers js:babel-core/register ./test/**/*.js"
     },

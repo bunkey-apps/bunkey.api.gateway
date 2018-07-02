@@ -6,7 +6,6 @@ MAINTAINER Antonio Mejias
 #Setting enviroment variables
 ENV appDir /var/www/app
 ENV NODE_ENV development
-ENV USER_SERVICE_URL http://user:20145
 
 #Setting work directory
 WORKDIR ${appDir}
