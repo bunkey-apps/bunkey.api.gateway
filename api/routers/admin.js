@@ -12,23 +12,29 @@ router
     .put('/users/:id', bearer, jwt, isAdmin, UserController.updateById)
     .delete('/users/:id', bearer, jwt, isAdmin, UserController.deleteById)
 
-    .post('/clients', AuthPolicies.jwt, isAdmin, ClientController.create)
-    .get('/clients', AuthPolicies.jwt, isAdmin, ClientController.get)
-    .get('/clients/:id', AuthPolicies.jwt, isAdmin, ClientController.getById)
-    .get('/clients/:id/contracts', AuthPolicies.jwt, isAdmin, ClientController.getContracts)
-    .put('/clients/:id', AuthPolicies.jwt, isAdmin, ClientController.updateById)
-    .delete('/clients/:id', AuthPolicies.jwt, isAdmin, ClientController.deleteById)
+    .post('/clients', jwt, isAdmin, ClientController.create)
+    .get('/clients', jwt, isAdmin, ClientController.get)
+    .get('/clients/:id', jwt, isAdmin, ClientController.getById)
+    .get('/clients/:id/contracts', jwt, isAdmin, ClientController.getContracts)
+    .put('/clients/:id', jwt, isAdmin, ClientController.updateById)
+    .delete('/clients/:id', jwt, isAdmin, ClientController.deleteById)
 
-    .post('/contracts', AuthPolicies.jwt, isAdmin, ContractController.create)
-    .get('/contracts', AuthPolicies.jwt, isAdmin, ContractController.get)
-    .get('/contracts/:id', AuthPolicies.jwt, isAdmin, ContractController.getById)
-    .put('/contracts/:id', AuthPolicies.jwt, isAdmin, ContractController.updateById)
-    .delete('/contracts/:id', AuthPolicies.jwt, isAdmin, ContractController.deleteById)
+    .post('/contracts', jwt, isAdmin, ContractController.create)
+    .get('/contracts', jwt, isAdmin, ContractController.get)
+    .get('/contracts/:id', jwt, isAdmin, ContractController.getById)
+    .put('/contracts/:id', jwt, isAdmin, ContractController.updateById)
+    .delete('/contracts/:id', jwt, isAdmin, ContractController.deleteById)
 
-    .post('/contracts/:contract/payments', AuthPolicies.jwt, isAdmin, PaymentController.create)
-    .get('/contracts/:contract/payments', AuthPolicies.jwt, isAdmin, PaymentController.getByContractId)
-    .get('/payments', AuthPolicies.jwt, isAdmin, PaymentController.get)
-    .put('/contracts/:contract/payments/:id', AuthPolicies.jwt, isAdmin, PaymentController.updateById)
-    .delete('/contracts/:contract/payments/:id', AuthPolicies.jwt, isAdmin, PaymentController.deleteById);
+    .post('/contracts/:contract/payments', jwt, isAdmin, PaymentController.create)
+    .get('/contracts/:contract/payments', jwt, isAdmin, PaymentController.getByContractId)
+    .get('/payments', jwt, isAdmin, PaymentController.get)
+    .put('/contracts/:contract/payments/:id', jwt, isAdmin, PaymentController.updateById)
+    .delete('/contracts/:contract/payments/:id', jwt, isAdmin, PaymentController.deleteById)
+    
+    .post('/tags', jwt, isAdmin, TagController.create)
+    .get('/tags', jwt, isAdmin, TagController.get)
+    .put('/tags/:id', jwt, isAdmin, TagController.updateById)
+    .delete('/tags/:id', jwt, isAdmin, TagController.deleteById);
+    
 
 module.exports = router;

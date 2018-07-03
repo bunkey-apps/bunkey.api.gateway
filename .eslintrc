@@ -47,6 +47,7 @@
         "AuthPolicies": true,
         "JWTService": true,
         "CanoError": true,
-        "AuthorizationError": true
+        "AuthorizationError": true,
+        "TagController": true
     }
 }
