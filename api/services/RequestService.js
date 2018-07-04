@@ -5,11 +5,20 @@ const defaultOptions = {
   json: true,
 };
 
-function process(error) {
-  if (!error.response) return error;
-  const { body: { code, description, message }, statusCode: status } = error.response;
-  const msg = message || 'An error occurred in RequestService.';
-  return new CanoError(msg, { code, description, status });
+async function startRequest(opts) {
+  try {
+    const response = await RequestPromise(opts);
+    return response;
+  } catch (error) {
+    if (!error.response) throw error;
+    const { body: { code, description, message }, statusCode: status } = error.response;
+    if (code && description && status) {
+      const msg = message || 'An error occurred in RequestService.';
+      throw new CanoError(msg, { code, description, status });
+    } else {
+      throw error;
+    }
+  }
 }
 
 class RequestWrapper {
@@ -19,51 +28,35 @@ class RequestWrapper {
   }
 
   async get(resource, opts = {}) {
-    try {
-      const method = 'get';
-      const uri = this.baseUrl + resource;
-      const options = Object.assign({}, defaultOptions, opts, { uri, method });
-      const response = await RequestPromise(options);
-      return response;
-    } catch (error) {
-      throw process(error);
-    }
+    const method = 'get';
+    const uri = this.baseUrl + resource;
+    const options = Object.assign({}, defaultOptions, opts, { uri, method });
+    const response = await startRequest(options);
+    return response;
   }
 
   async post(resource, body = {}, opts = {}) {
-    try {
-      const method = 'post';
-      const uri = this.baseUrl + resource;
-      const options = Object.assign({}, defaultOptions, opts, { body, uri, method });
-      const response = await RequestPromise(options);
-      return response;
-    } catch (error) {
-      throw process(error);
-    }
+    const method = 'post';
+    const uri = this.baseUrl + resource;
+    const options = Object.assign({}, defaultOptions, opts, { body, uri, method });
+    const response = await startRequest(options);
+    return response;
   }
 
   async put(resource, body = {}, opts = {}) {
-    try {
-      const method = 'put';
-      const uri = this.baseUrl + resource;
-      const options = Object.assign({}, defaultOptions, opts, { body, uri, method });
-      const response = await RequestPromise(options);
-      return response;
-    } catch (error) {
-      throw process(error);
-    }
+    const method = 'put';
+    const uri = this.baseUrl + resource;
+    const options = Object.assign({}, defaultOptions, opts, { body, uri, method });
+    const response = await startRequest(options);
+    return response;
   }
 
   async delete(resource, body = {}, opts = {}) {
-    try {
-      const method = 'delete';
-      const uri = this.baseUrl + resource;
-      const options = Object.assign({}, defaultOptions, opts, { body, uri, method });
-      const response = await RequestPromise(options);
-      return response;
-    } catch (error) {
-      throw process(error);
-    }
+    const method = 'delete';
+    const uri = this.baseUrl + resource;
+    const options = Object.assign({}, defaultOptions, opts, { body, uri, method });
+    const response = await startRequest(options);
+    return response;
   }
 
 }
