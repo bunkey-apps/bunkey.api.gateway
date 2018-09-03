@@ -1,13 +1,10 @@
 /* eslint global-require:0*/
 import R from 'ramda';
 
-// const { UserService } = cano.app.services;
-// const { TokenService } = cano.app.services;
-
 class AuthController {
 
   async signIn({ request, response }) {
-    const Token = require('../models/Token');
+    require('../models/Token');
     const { body } = request;
     const result = await UserService.login(body);
     const token = cano.app.config.redis.nohm.factory('Token');
@@ -21,18 +18,18 @@ class AuthController {
     const { body } = ctx.request;
     const isRefreshTokenValid = await TokenService.exist({ refreshToken: body.refreshToken });
     if (isRefreshTokenValid) {
-        const { accessToken } = await TokenService.findOne({ refreshToken: body.refreshToken });
-        if (await JWTService.isTokenExpired(accessToken)) {
-            const result = await UserService.refreshToken(body);
-            await TokenService.findAndUpdate({ refreshToken: body.refreshToken }, { accessToken: result.body.accessToken });
-            ctx.status = result.statusCode;
-            ctx.body = result.body;
-        } else {
-            ctx.status = 200;
-            ctx.body = { accessToken };
-        }
+      const { accessToken } = await TokenService.findOne({ refreshToken: body.refreshToken });
+      if (await JWTService.isTokenExpired(accessToken)) {
+        const result = await UserService.refreshToken(body);
+        await TokenService.findAndUpdate({ refreshToken: body.refreshToken }, { accessToken: result.body.accessToken });
+        ctx.status = result.statusCode;
+        ctx.body = result.body;
+      } else {
+        ctx.status = 200;
+        ctx.body = { accessToken };
+      }
     } else {
-        throw new AuthorizationError('InvalidRefreshToken', `Refresh token ${body.refreshToken} not found in redis DB`);
+      throw new AuthorizationError('InvalidRefreshToken', `Refresh token ${body.refreshToken} not found in redis DB`);
     }
   }
 

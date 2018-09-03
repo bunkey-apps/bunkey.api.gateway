@@ -1,5 +1,3 @@
-const { ContractService } = cano.app.services;
-
 class ContractController {
 
   async create({ request, response }) {

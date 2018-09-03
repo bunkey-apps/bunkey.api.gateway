@@ -1,6 +1,4 @@
-// import R from 'ramda';
 class UserController {
-
   async create({ request, response }) {
     const result = await UserService.create(request.body);
     response.status = result.statusCode;
@@ -32,6 +30,17 @@ class UserController {
     response.body = result.body;
   }
 
+  async getMe({ state: { user }, response }) {
+    const result = await UserService.getById(user._id);
+    response.status = result.statusCode;
+    response.body = result.body;
+  }
+
+  async updateMe({ request, state: { user }, response }) {
+    const result = await UserService.updateById(user._id, request.body);
+    response.status = result.statusCode;
+    response.body = result.body;
+  }
 }
 
 module.exports = UserController;

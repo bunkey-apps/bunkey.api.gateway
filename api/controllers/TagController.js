@@ -1,5 +1,3 @@
-const { TagService } = cano.app.services;
-
 class TagController {
 
   async create({ request, response }) {

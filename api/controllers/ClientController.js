@@ -1,5 +1,3 @@
-const { ClientService } = cano.app.services;
-
 class ClientController {
 
   async create({ request, response }) {

@@ -1,5 +1,3 @@
-const { PaymentService } = cano.app.services;
-
 class PaymentController {
 
   async create({ request, params, response }) {
