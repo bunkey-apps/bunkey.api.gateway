@@ -3,13 +3,13 @@ import Router from 'koa-router';
 const { bearer, jwt, role } = AuthPolicies;
 
 const router = new Router({ prefix: '/v1/users' });
-// const isAdmin = role('admin');
+const roles = role(['admin', 'editor', 'client']);
 
 router
-    .post('/', bearer, jwt, UserController.create)
-    .get('/', bearer, jwt, UserController.get)
-    .get('/:id', bearer, jwt, UserController.getById)
-    .put('/:id', bearer, jwt, UserController.updateById)
-    .delete('/:id', bearer, jwt, UserController.deleteById);
+    .post('/', bearer, jwt, roles, UserController.create)
+    .get('/', bearer, jwt, roles, UserController.get)
+    .get('/:id', bearer, jwt, roles, UserController.getById)
+    .put('/:id', bearer, jwt, roles, UserController.updateById)
+    .delete('/:id', bearer, jwt, roles, UserController.deleteById);
 
 module.exports = router;
