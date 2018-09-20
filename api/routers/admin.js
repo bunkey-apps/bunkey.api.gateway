@@ -16,6 +16,7 @@ router
     .get('/clients', jwt, isAdmin, ClientController.get)
     .get('/clients/:id', jwt, isAdmin, ClientController.getById)
     .get('/clients/:id/contracts', jwt, isAdmin, ClientController.getContracts)
+    .get('/clients/:id/users', jwt, isAdmin, ClientController.getUsers)
     .put('/clients/:id', jwt, isAdmin, ClientController.updateById)
     .delete('/clients/:id', jwt, isAdmin, ClientController.deleteById)
 
@@ -25,11 +26,11 @@ router
     .put('/contracts/:id', jwt, isAdmin, ContractController.updateById)
     .delete('/contracts/:id', jwt, isAdmin, ContractController.deleteById)
 
-    .post('/contracts/:contract/payments', jwt, isAdmin, PaymentController.create)
+    // .post('/contracts/:contract/payments', jwt, isAdmin, PaymentController.create)
     .get('/contracts/:contract/payments', jwt, isAdmin, PaymentController.getByContractId)
-    .get('/payments', jwt, isAdmin, PaymentController.get)
+    // .get('/payments', jwt, isAdmin, PaymentController.get)
     .put('/contracts/:contract/payments/:id', jwt, isAdmin, PaymentController.updateById)
-    .delete('/contracts/:contract/payments/:id', jwt, isAdmin, PaymentController.deleteById)
+    // .delete('/contracts/:contract/payments/:id', jwt, isAdmin, PaymentController.deleteById)
     
     .post('/tags', jwt, isAdmin, TagController.create)
     .get('/tags', jwt, isAdmin, TagController.get)

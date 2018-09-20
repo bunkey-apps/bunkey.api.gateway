@@ -1,3 +1,4 @@
+
 class ClientController {
 
   async create({ request, response }) {
@@ -24,8 +25,15 @@ class ClientController {
     response.body = result.body;
   }
 
+  async getUsers({ request, params: { id: clientOwner }, response }) {
+    const result = await UserService.get({ ...request.query, clientOwner });
+    response.status = result.statusCode;
+    response.body = result.body;
+  }
+
   async updateById({ params, request, response }) {
     const result = await ClientService.updateById(params.id, request.body);
+    console.log('updateById -> result', result.statusCode, result.body);
     response.status = result.statusCode;
     response.body = result.body;
   }

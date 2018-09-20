@@ -1,5 +1,5 @@
 /* eslint no-use-before-define:0*/
-module.exports = () => async(ctx, next) => {
+module.exports = () => async (ctx, next) => {
   try {
     await next();
   } catch (err) {

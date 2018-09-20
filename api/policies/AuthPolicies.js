@@ -1,4 +1,3 @@
-// const { MessageService } = cano.app.services;
 class AuthPolicies {
 
   role(roles) {

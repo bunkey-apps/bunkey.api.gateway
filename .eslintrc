@@ -43,6 +43,8 @@
         "ContractController": true,
         "PaymentController": true,
         "UserService": true,
+        "ObjectController": true,
+        "ObjectService": true,
         "ClientService": true,
         "ContractService": true,
         "PaymentService": true,
