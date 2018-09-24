@@ -5,5 +5,6 @@ const { AuthController } = cano.app.controllers;
 
 router.post('/recovery-password', AuthController.recoveryPassword);
 router.put('/recovery-password', AuthController.updatePassword);
+router.post('/url-signature', ObjectController.getUrlSignature);
 
 module.exports = router;

@@ -10,6 +10,13 @@ class ObjectService {
     const response = await request.post(`/clients/${client}/objects/${object}`, body, { headers });
     return response;
   }
+  
+  async getUrlSignature(data) {
+    const { RequestService } = cano.app.services;
+    const request = RequestService.create(baseUrl);
+    const response = await request.post('/url-signature', data, { headers });
+    return response;
+  }
 
   async getById(client, object) {
     const { RequestService } = cano.app.services;

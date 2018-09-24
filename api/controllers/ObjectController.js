@@ -12,6 +12,12 @@ class ObjectController {
     response.body = result.body;
   }
 
+  async getUrlSignature({ request: { body }, response }) {
+    const result = await ObjectService.getUrlSignature(body);
+    response.status = result.statusCode;
+    response.body = result.body;
+  }
+
   async updateById({ params: { id, object }, request, response }) {
     const result = await ObjectService.updateById(id, object, request.body);
     response.status = result.statusCode;

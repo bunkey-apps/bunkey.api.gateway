@@ -11,8 +11,6 @@ router
 .get('/:id', bearer, jwt, ClientController.getById)
 .put('/:id', bearer, jwt, rolesOne, async (ctx, next) => {
   const { acountSetting } = ctx.request.body;
-  console.log('acountSetting', acountSetting);
-  
   ctx.request.body = { acountSetting };
   await next();
 }, ClientController.updateById)
