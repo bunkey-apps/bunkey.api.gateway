@@ -43,18 +43,9 @@ class AuthController {
     ctx.body = result.body;
   }
 
-  async recoveryPassword({ request, response }) {
-    const { body } = request;
+  async recoveryPassword({ request: { body }, response }) {
     const result = await UserService.recoveryPassword(body);
-    response.status = result.status;
-    response.body = result.body;
-  }
-
-  async updatePassword({ request, response }) {
-    const { body } = request;
-    const result = await UserService.updatePassword(body);
-    response.status = result.status;
-    response.body = result.body;
+    response.status = result.statusCode;
   }
 
 }
