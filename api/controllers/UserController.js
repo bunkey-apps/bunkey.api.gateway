@@ -37,7 +37,7 @@ class UserController {
   }
 
   async updateMe({ request, state: { user }, response }) {
-    const result = await UserService.updateById(user._id, request.body);
+    const result = await UserService.updateById(user._id, { ...request.body, role: user.role });
     response.status = result.statusCode;
     response.body = result.body;
   }
