@@ -7,7 +7,7 @@ const headers = {
 
 class UserService {
 
-  login(body) {
+  signIn(body) {
     const request = RequestService.create(baseUrl);
     return request.post('/auth', body, { headers });
   }
@@ -17,9 +17,14 @@ class UserService {
     return request.post('/auth/refresh-token', body, { headers });
   }
 
-  logout(body) {
+  signOut(body) {
     const request = RequestService.create(baseUrl);
     return request.post('/auth/logout', body, { headers });
+  }
+
+  signUp(body) {
+    const request = RequestService.create(baseUrl);
+    return request.post('/users', body, { headers });
   }
 
   recoveryPassword(body) {
@@ -47,9 +52,20 @@ class UserService {
     return request.put(`/users/${id}`, body, { headers });
   }
 
-  deleteById(id, body) {
+  sendInvitation(data) {
     const request = RequestService.create(baseUrl);
-    return request.delete(`/users/${id}`, body, { headers });
+    return request.post('/invitations', data, { headers });
+  }
+
+  removeWorkClient(id, client) {
+    cano.log.debug('removeWorkClient -> id', id, 'client ->', client);
+    const request = RequestService.create(baseUrl);
+    return request.delete(`/users/${id}/work-clients/${client}`, {}, { headers });
+  }
+
+  deleteById(id) {
+    const request = RequestService.create(baseUrl);
+    return request.delete(`/users/${id}`, {}, { headers });
   }
 
 }

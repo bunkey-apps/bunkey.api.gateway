@@ -10,6 +10,7 @@ router
     .get('/users', bearer, jwt, isAdmin, UserController.get)
     .get('/users/:id', bearer, jwt, isAdmin, UserController.getById)
     .put('/users/:id', bearer, jwt, isAdmin, UserController.updateById)
+    .delete('/users/:id/work-clients/:client', bearer, jwt, isAdmin, UserController.removeWorkClient)
     .delete('/users/:id', bearer, jwt, isAdmin, UserController.deleteById)
 
     .post('/clients', jwt, isAdmin, ClientController.create)
@@ -26,11 +27,8 @@ router
     .put('/contracts/:id', jwt, isAdmin, ContractController.updateById)
     .delete('/contracts/:id', jwt, isAdmin, ContractController.deleteById)
 
-    // .post('/contracts/:contract/payments', jwt, isAdmin, PaymentController.create)
     .get('/contracts/:contract/payments', jwt, isAdmin, PaymentController.getByContractId)
-    // .get('/payments', jwt, isAdmin, PaymentController.get)
     .put('/contracts/:contract/payments/:id', jwt, isAdmin, PaymentController.updateById)
-    // .delete('/contracts/:contract/payments/:id', jwt, isAdmin, PaymentController.deleteById)
     
     .post('/tags', jwt, isAdmin, TagController.create)
     .get('/tags', jwt, isAdmin, TagController.get)

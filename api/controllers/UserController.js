@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 class UserController {
   async create({ request, response }) {
     const result = await UserService.create(request.body);
@@ -23,6 +24,14 @@ class UserController {
     ctx.status = result.statusCode;
     ctx.body = result.body;
   }
+  
+  async removeWorkClient({ params, state, response }) {
+    const { client, id } = params;
+    const { user: { _id } } = state;
+    const result = await UserService.removeWorkClient(id || _id, client);
+    response.status = result.statusCode;
+    response.body = result.body;
+  }
 
   async deleteById({ params, response }) {
     const result = await UserService.deleteById(params.id);
@@ -36,11 +45,12 @@ class UserController {
     response.body = result.body;
   }
 
-  async updateMe({ request, state: { user }, response }) {
-    const result = await UserService.updateById(user._id, { ...request.body, role: user.role });
+  async updateMe({ request: { body }, state: { user }, response }) {
+    const result = await UserService.updateById(user._id, { ...body, role: user.role });
     response.status = result.statusCode;
     response.body = result.body;
   }
+
 }
 
 module.exports = UserController;

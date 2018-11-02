@@ -7,4 +7,5 @@ const { bearer, jwt } = AuthPolicies;
 router.post('/recovery-password', AuthController.recoveryPassword);
 router.post('/url-signature', bearer, jwt, ObjectController.getUrlSignature);
 
+
 module.exports = router;

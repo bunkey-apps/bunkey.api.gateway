@@ -30,7 +30,7 @@ class BearerStrategy extends Strategy {
             if (ids.length === 0) {
                 return done(new Error('Invalid Token'));
             }
-            done(null, true);
+            done(null, accessToken);
         });
     }
 }

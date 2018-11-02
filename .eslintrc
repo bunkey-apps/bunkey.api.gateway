@@ -53,6 +53,7 @@
         "TokenService": true,
         "AuthPolicies": true,
         "JWTService": true,
+        "InvitationService": true,
         "CanoError": true,
         "AuthorizationError": true,
         "TagController": true
