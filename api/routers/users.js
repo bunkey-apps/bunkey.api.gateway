@@ -14,6 +14,11 @@ router
     .put('/me', bearer, jwt, UserController.updateMe)
     .put('/:id', bearer, jwt, roles, UserController.updateById)
     .delete('/me/work-clients/:client', bearer, jwt, isOperator, UserController.removeWorkClient)
+
+    .get('/me/clients/:client/workspaces', bearer, jwt, ObjectController.getWorkspace)
+    .put('/me/clients/:client/workspaces/objects', bearer, jwt, ObjectController.addObjectToWorkspace)
+    .delete('/me/clients/:client/workspaces/objects', bearer, jwt, ObjectController.deleteObjectToWorkspace)
+    
     .delete('/:id/work-clients/:client', bearer, jwt, roles, UserController.removeWorkClient)
     .delete('/:id', bearer, jwt, roles, UserController.deleteById);
 
