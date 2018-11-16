@@ -34,21 +34,29 @@ class ObjectService {
     return response;
   }
 
-  async getWorkspace(user, client) {
+  // Favorites
+
+  async getFavorites(user, client) {
     const request = RequestService.create(baseUrl);
-    const response = await request.get(`/users/${user}/clients/${client}/workspaces`, { headers });
+    const response = await request.get(`/users/${user}/clients/${client}/favorites`, { headers });
     return response;
   }
 
-  async addObjectToWorkspace(user, client, body) {
+  async addObjectToFavorites(user, client, object, body) {
     const request = RequestService.create(baseUrl);
-    const response = await request.put(`/users/${user}/clients/${client}/workspaces/objects`, body, { headers });
+    const response = await request.post(`/users/${user}/clients/${client}/favorites/${object}`, body, { headers });
     return response;
   }
 
-  async deleteObjectToWorkspace(user, client, body) {
+  async updateWorkspaceToFavorites(user, client, object, body) {
     const request = RequestService.create(baseUrl);
-    const response = await request.delete(`/users/${user}/clients/${client}/workspaces/objects`, body, { headers });
+    const response = await request.put(`/users/${user}/clients/${client}/favorites/${object}`, body, { headers });
+    return response;
+  }
+
+  async deleteObjectToFavorites(user, client, object, body) {
+    const request = RequestService.create(baseUrl);
+    const response = await request.delete(`/users/${user}/clients/${client}/favorites/${object}`, body, { headers });
     return response;
   }
 

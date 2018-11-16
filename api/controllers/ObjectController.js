@@ -31,20 +31,26 @@ class ObjectController {
     response.body = result.body;
   }
 
-  async getWorkspace({ params: { client }, state: { user }, response }) {
-    const result = await ObjectService.getWorkspace(user._id, client);
+  async getFavorites({ params: { client }, state: { user }, response }) {
+    const result = await ObjectService.getFavorites(user._id, client);
     response.status = result.statusCode;
     response.body = result.body;
   }
 
-  async addObjectToWorkspace({ request: { body }, params: { client }, state: { user }, response }) {
-    const result = await ObjectService.addObjectToWorkspace(user._id, client, body);
+  async addObjectToFavorites({ request: { body }, params: { client, object }, state: { user }, response }) {
+    const result = await ObjectService.addObjectToFavorites(user._id, client, object, body);
     response.status = result.statusCode;
     response.body = result.body;
   }
 
-  async deleteObjectToWorkspace({ request: { body }, params: { client }, state: { user }, response }) {
-    const result = await ObjectService.deleteObjectToWorkspace(user._id, client, body);
+  async updateWorkspaceToFavorites({ request: { body }, params: { client, object }, state: { user }, response }) {
+    const result = await ObjectService.updateWorkspaceToFavorites(user._id, client, object, body);
+    response.status = result.statusCode;
+    response.body = result.body;
+  }
+
+  async deleteObjectToFavorites({ request: { body }, params: { client, object }, state: { user }, response }) {
+    const result = await ObjectService.deleteObjectToFavorites(user._id, client, object, body);
     response.status = result.statusCode;
     response.body = result.body;
   }

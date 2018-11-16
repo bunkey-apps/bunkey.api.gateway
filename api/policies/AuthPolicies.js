@@ -4,8 +4,6 @@ class AuthPolicies {
     const rolArray = Array.isArray(roles) ? roles : [roles];
     return async (ctx, next) => {
       const { user: { role } } = ctx.state;
-      cano.log.debug('role', role);
-      cano.log.debug('rolArray', rolArray);
       if (rolArray.includes(role)) {
         await next();
         return;
@@ -32,7 +30,6 @@ class AuthPolicies {
   async jwt(ctx, next) {
     const cb = async (err, payload, info) => {
       const { user } = payload;
-      cano.log.debug('AuthPolicies -> jwt -> cb -> payload', payload);
       if (info && info.name === 'TokenExpiredError') {
         throw new AuthorizationError('InvalidAccessToken', 'The Authentication token has expired');
       }

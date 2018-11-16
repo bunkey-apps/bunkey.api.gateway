@@ -7,7 +7,7 @@ const roles = role(['admin', 'editor', 'client']);
 const isOperator = role('operator');
 
 router
-    .post('/', bearer, jwt, roles, UserController.create)
+    .post('/', UserController.create)
     .get('/', bearer, jwt, roles, UserController.get)
     .get('/me', bearer, jwt, UserController.getMe)
     .get('/:id', bearer, jwt, roles, UserController.getById)
@@ -15,9 +15,10 @@ router
     .put('/:id', bearer, jwt, roles, UserController.updateById)
     .delete('/me/work-clients/:client', bearer, jwt, isOperator, UserController.removeWorkClient)
 
-    .get('/me/clients/:client/workspaces', bearer, jwt, ObjectController.getWorkspace)
-    .put('/me/clients/:client/workspaces/objects', bearer, jwt, ObjectController.addObjectToWorkspace)
-    .delete('/me/clients/:client/workspaces/objects', bearer, jwt, ObjectController.deleteObjectToWorkspace)
+    .get('/me/clients/:client/favorites', bearer, jwt, ObjectController.getFavorites)
+    .post('/me/clients/:client/favorites/:object', bearer, jwt, ObjectController.addObjectToFavorites)
+    .put('/me/clients/:client/favorites/:object', bearer, jwt, ObjectController.updateWorkspaceToFavorites)
+    .delete('/me/clients/:client/favorites/:object', bearer, jwt, ObjectController.deleteObjectToFavorites)
     
     .delete('/:id/work-clients/:client', bearer, jwt, roles, UserController.removeWorkClient)
     .delete('/:id', bearer, jwt, roles, UserController.deleteById);
