@@ -14,6 +14,7 @@ router
   ctx.request.body = { acountSetting };
   await next();
 }, ClientController.updateById)
+.get('/:id/objects/', bearer, jwt, ObjectController.get)
 .post('/:id/objects/:object', bearer, jwt, rolesTwo, ObjectController.create)
 .get('/:id/objects/:object', bearer, jwt, ObjectController.getById)
 .put('/:id/objects/:object', bearer, jwt, rolesTwo, ObjectController.updateById)

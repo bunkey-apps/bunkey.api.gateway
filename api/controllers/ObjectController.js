@@ -6,7 +6,13 @@ class ObjectController {
     response.status = result.statusCode;
     response.body = result.body;
   }
-  
+
+  async get({ query, params: { id }, response }) {
+    const result = await ObjectService.get(id, query);
+    response.status = result.statusCode;
+    response.body = result.body;
+  }
+
   async getById({ params: { id, object }, response }) {
     const result = await ObjectService.getById(id, object);
     response.status = result.statusCode;

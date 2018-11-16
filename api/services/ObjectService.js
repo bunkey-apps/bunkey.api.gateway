@@ -1,3 +1,5 @@
+import queryString from 'query-string';
+
 const baseUrl = process.env.OBJECT_SERVICE_URL;
 const headers = {
   apikey: process.env.OBJECT_APIKEY,
@@ -13,6 +15,12 @@ class ObjectService {
   async getUrlSignature(data) {
     const request = RequestService.create(baseUrl);
     const response = await request.post('/url-signature', data, { headers });
+    return response;
+  }
+
+  async get(client, query) {
+    const request = RequestService.create(baseUrl);
+    const response = await request.get(`/clients/${client}/objects?${queryString.stringify(query)}`, { headers });
     return response;
   }
 
