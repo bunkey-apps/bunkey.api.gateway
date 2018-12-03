@@ -13,8 +13,8 @@ class ObjectController {
     response.body = result.body;
   }
 
-  async getById({ params: { id, object }, response }) {
-    const result = await ObjectService.getById(id, object);
+  async getById({ state: { user }, params: { id, object }, response }) {
+    const result = await ObjectService.getById(id, object, user);
     response.status = result.statusCode;
     response.body = result.body;
   }
@@ -33,6 +33,12 @@ class ObjectController {
 
   async deleteById({ params: { id, object }, response }) {
     const result = await ObjectService.deleteById(id, object);
+    response.status = result.statusCode;
+    response.body = result.body;
+  }
+
+  async getRecent({ params: { client }, state: { user }, response }) {
+    const result = await ObjectService.getRecent(user._id, client);
     response.status = result.statusCode;
     response.body = result.body;
   }

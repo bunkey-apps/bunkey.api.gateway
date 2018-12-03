@@ -24,9 +24,9 @@ class ObjectService {
     return response;
   }
 
-  async getById(client, object) {
+  async getById(client, object, { _id }) {
     const request = RequestService.create(baseUrl);
-    const response = await request.get(`/clients/${client}/objects/${object}`, { headers });
+    const response = await request.get(`/clients/${client}/objects/${object}?user=${_id}`, { headers });
     return response;
   }
 
@@ -43,6 +43,12 @@ class ObjectService {
   }
 
   // Favorites
+  
+  async getRecent(user, client) {
+    const request = RequestService.create(baseUrl);
+    const response = await request.get(`/users/${user}/clients/${client}/recent`, { headers });
+    return response;
+  }
 
   async getFavorites(user, client) {
     const request = RequestService.create(baseUrl);
