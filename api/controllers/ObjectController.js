@@ -37,6 +37,12 @@ class ObjectController {
     response.body = result.body;
   }
 
+  async getShared({ params: { client }, state: { user }, response }) {
+    const result = await ObjectService.getShared(user._id, client);
+    response.status = result.statusCode;
+    response.body = result.body;
+  }
+
   async getRecent({ params: { client }, state: { user }, response }) {
     const result = await ObjectService.getRecent(user._id, client);
     response.status = result.statusCode;

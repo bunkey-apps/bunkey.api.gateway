@@ -15,6 +15,7 @@ router
     .put('/:id', bearer, jwt, roles, UserController.updateById)
     .delete('/me/work-clients/:client', bearer, jwt, isOperator, UserController.removeWorkClient)
 
+    .get('/me/clients/:client/shared', bearer, jwt, ObjectController.getShared)
     .get('/me/clients/:client/recent', bearer, jwt, ObjectController.getRecent)
     .get('/me/clients/:client/favorites', bearer, jwt, ObjectController.getFavorites)
     .post('/me/clients/:client/favorites/:object', bearer, jwt, ObjectController.addObjectToFavorites)

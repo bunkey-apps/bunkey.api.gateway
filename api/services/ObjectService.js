@@ -42,13 +42,23 @@ class ObjectService {
     return response;
   }
 
-  // Favorites
+  // Shared
+  
+  async getShared(user, client) {
+    const request = RequestService.create(baseUrl);
+    const response = await request.get(`/users/${user}/clients/${client}/shared`, { headers });
+    return response;
+  }
+
+  // Recent
   
   async getRecent(user, client) {
     const request = RequestService.create(baseUrl);
     const response = await request.get(`/users/${user}/clients/${client}/recent`, { headers });
     return response;
   }
+
+  // Favorites
 
   async getFavorites(user, client) {
     const request = RequestService.create(baseUrl);
