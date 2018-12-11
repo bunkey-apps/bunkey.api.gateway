@@ -42,6 +42,8 @@
         "PlanController": true,
         "ContractController": true,
         "PaymentController": true,
+        "SharedController": true,
+        "SharedService": true,
         "UserService": true,
         "ObjectController": true,
         "ObjectService": true,
