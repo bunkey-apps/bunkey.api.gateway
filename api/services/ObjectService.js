@@ -30,6 +30,13 @@ class ObjectService {
     return response;
   }
 
+  async getWorkspace(id, query) {
+    const { RequestService } = cano.app.services;
+    const request = RequestService.create(baseUrl);
+    const response = await request.get(`/clients/${id}/workspace?${queryString.stringify(query)}`, { headers });
+    return response;
+  }
+
   async updateById(client, object, body) {
     const request = RequestService.create(baseUrl);
     const response = await request.put(`/clients/${client}/objects/${object}`, body, { headers });
