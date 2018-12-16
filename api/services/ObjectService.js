@@ -36,6 +36,12 @@ class ObjectService {
     const response = await request.get(`/clients/${id}/workspace?${queryString.stringify(query)}`, { headers });
     return response;
   }
+  
+  async update(client, body) {
+    const request = RequestService.create(baseUrl);
+    const response = await request.put(`/clients/${client}/objects`, body, { headers });
+    return response;
+  }
 
   async updateById(client, object, body) {
     const request = RequestService.create(baseUrl);

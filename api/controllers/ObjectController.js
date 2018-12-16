@@ -31,6 +31,12 @@ class ObjectController {
     response.body = result.body;
   }
 
+  async update({ request, params: { id }, response }) {
+    const result = await ObjectService.update(id, request.body);
+    response.status = result.statusCode;
+    response.body = result.body;
+  }
+
   async updateById({ params: { id, object }, request, response }) {
     const result = await ObjectService.updateById(id, object, request.body);
     response.status = result.statusCode;
