@@ -12,6 +12,15 @@ class AuthPolicies {
     };
   }
 
+  async validateEmailSignUp(ctx, next) {
+    const { user: { email } } = ctx.state;
+    const { body } = ctx.request;
+    if (email !== body.email) {
+      throw new AuthorizationError('EmailSignUpInvalid', `Email ${body.email} sent to sign up is invalid.`);
+    }
+    await next();
+  }
+
   async bearer(ctx, next) {
     const cb = async (err, accessToken) => {
       if (err) {

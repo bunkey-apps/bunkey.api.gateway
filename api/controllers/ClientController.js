@@ -33,7 +33,6 @@ class ClientController {
 
   async updateById({ params, request, response }) {
     const result = await ClientService.updateById(params.id, request.body);
-    console.log('updateById -> result', result.statusCode, result.body);
     response.status = result.statusCode;
     response.body = result.body;
   }
