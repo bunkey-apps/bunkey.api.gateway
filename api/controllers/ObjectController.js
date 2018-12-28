@@ -14,7 +14,14 @@ class ObjectController {
   }
 
   async getById({ state: { user }, params: { id, object }, response }) {
-    const result = await ObjectService.getById(id, object, user);
+    const query = {};
+    if (user._id) {
+      Object.assign(query, { user: user._id });
+    }
+    if (user.role === 'shared') {
+      Object.assign(query, { shared: user.email });
+    }
+    const result = await ObjectService.getById(id, object, query);
     response.status = result.statusCode;
     response.body = result.body;
   }

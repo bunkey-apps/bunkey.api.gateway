@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import queryString from 'query-string';
 
 const baseUrl = process.env.OBJECT_SERVICE_URL;
@@ -24,9 +25,9 @@ class ObjectService {
     return response;
   }
 
-  async getById(client, object, { _id }) {
+  async getById(client, object, query) {
     const request = RequestService.create(baseUrl);
-    const response = await request.get(`/clients/${client}/objects/${object}?user=${_id}`, { headers });
+    const response = await request.get(`/clients/${client}/objects/${object}?${queryString.stringify(query)}`, { headers });
     return response;
   }
 

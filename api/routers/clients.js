@@ -6,7 +6,7 @@ const router = new Router({ prefix: '/v1/clients' });
 
 const rolesOne = role(['admin', 'editor', 'client']);
 const rolesTwo = role(['admin', 'editor']);
-const rolesThree = role(['admin', 'editor', 'client', 'operator']);
+const rolesThree = role(['admin', 'editor', 'client', 'operator', 'shared']);
 
 router
   .get('/:id', bearer, jwt, ClientController.getById)
