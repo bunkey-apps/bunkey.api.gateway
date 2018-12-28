@@ -6,6 +6,12 @@ class SharedController {
         response.body = result.body;
     }
 
+    async revoke({ request: { body }, response }) {
+        const result = await SharedService.revoke(body);
+        response.status = result.statusCode;
+        response.body = result.body;
+    }
+
     async validate({ request: { body }, response }) {
         require('../models/Token');
         const result = await SharedService.validate(body);
