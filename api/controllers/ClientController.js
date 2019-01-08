@@ -10,6 +10,8 @@ class ClientController {
   async get({ request, response }) {
     const result = await ClientService.get(request.query);
     response.status = result.statusCode;
+    response.set('X-Pagination-Total-Count', result.headers['x-pagination-total-count']);
+    response.set('X-Pagination-Limit', result.headers['x-pagination-limit']);
     response.body = result.body;
   }
   

@@ -9,6 +9,8 @@ class UserController {
   async get({ request, response }) {
     const result = await UserService.get(request.query);
     response.status = 200;
+    response.set('X-Pagination-Total-Count', result.headers['x-pagination-total-count']);
+    response.set('X-Pagination-Limit', result.headers['x-pagination-limit']);
     response.body = result.body;
   }
 

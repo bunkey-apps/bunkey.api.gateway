@@ -10,6 +10,8 @@ class ObjectController {
   async get({ query, params: { id }, response }) {
     const result = await ObjectService.get(id, query);
     response.status = result.statusCode;
+    response.set('X-Pagination-Total-Count', result.headers['x-pagination-total-count']);
+    response.set('X-Pagination-Limit', result.headers['x-pagination-limit']);
     response.body = result.body;
   }
 
