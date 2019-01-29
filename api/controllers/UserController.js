@@ -26,7 +26,15 @@ class UserController {
     ctx.status = result.statusCode;
     ctx.body = result.body;
   }
-  
+
+  async updateWorkClient({ request: { body }, params, state, response }) {
+    const { client, id } = params;
+    const { user: { _id } } = state;
+    const result = await ObjectService.updateWorkClient(id || _id, client, body);
+    response.status = result.statusCode;
+    response.body = result.body;
+  }
+
   async removeWorkClient({ params, state, response }) {
     const { client, id } = params;
     const { user: { _id } } = state;

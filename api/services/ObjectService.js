@@ -105,6 +105,12 @@ class ObjectService {
     return response;
   }
 
+  updateWorkClient(user, client, data) {
+    cano.log.debug('updateWorkClient -> user', user, 'client ->', client, 'data ->', data);
+    const request = RequestService.create(baseUrl);
+    return request.put(`/clients/${client}/workspaces`, { ...data, user }, { headers });
+  }
+
 }
 
 module.exports = ObjectService;

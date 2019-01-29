@@ -22,6 +22,7 @@ router
     .put('/me/clients/:client/favorites/:object', bearer, jwt, ObjectController.updateWorkspaceToFavorites)
     .delete('/me/clients/:client/favorites/:object', bearer, jwt, ObjectController.deleteObjectToFavorites)
     
+    .put('/:id/workspaces/:client', bearer, jwt, roles, UserController.updateWorkClient)
     .delete('/:id/workspaces/:client', bearer, jwt, roles, UserController.removeWorkClient)
     .delete('/:id', bearer, jwt, roles, UserController.deleteById);
 
