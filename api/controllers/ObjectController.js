@@ -28,6 +28,13 @@ class ObjectController {
     response.body = result.body;
   }
 
+  async getWorkspace({ params: { client }, state, response }) {
+    const { user: { _id: user } } = state;
+    const result = await ObjectService.getWorkspace(client, user);
+    response.status = result.statusCode;
+    response.body = result.body;
+  }
+
   async getWorkspacesByClient({ params, response }) {
     const result = await ObjectService.getWorkspacesByClient(params.id);
     response.status = result.statusCode;

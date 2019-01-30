@@ -4,7 +4,7 @@ const { bearer, jwt, role } = AuthPolicies;
 
 const router = new Router({ prefix: '/v1/clients' });
 
-const rolesOne = role(['admin', 'editor', 'client']);
+const rolesOne = role(['admin', 'editor', 'client', 'operator']);
 const rolesTwo = role(['admin', 'editor']);
 const rolesThree = role(['admin', 'editor', 'client', 'operator', 'shared']);
 

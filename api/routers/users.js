@@ -3,7 +3,7 @@ import Router from 'koa-router';
 const { bearer, jwt, role } = AuthPolicies;
 
 const router = new Router({ prefix: '/v1/users' });
-const roles = role(['admin', 'editor', 'client']);
+const roles = role(['admin', 'editor', 'client', 'operator']);
 const isOperator = role('operator');
 
 router
@@ -13,6 +13,7 @@ router
     .put('/me', bearer, jwt, UserController.updateMe)
     .put('/:id', bearer, jwt, roles, UserController.updateById)
     .get('/me/workspaces', bearer, jwt, ObjectController.getWorkspacesByUser)
+    .get('/me/workspaces/:client', bearer, jwt, ObjectController.getWorkspace)
     .delete('/me/workspaces/:client', bearer, jwt, isOperator, UserController.removeWorkClient)
 
     .get('/me/clients/:client/shared', bearer, jwt, ObjectController.getShared)
